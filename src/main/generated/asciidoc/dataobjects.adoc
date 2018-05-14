@@ -1,0 +1,16 @@
+= Cheatsheets
+
+[[Thing]]
+== Thing
+
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[completed]]`completed`|`Boolean`|-
+|[[id]]`id`|`Number (Integer)`|-
+|[[order]]`order`|`Number (Integer)`|-
+|[[title]]`title`|`String`|-
+|===
+

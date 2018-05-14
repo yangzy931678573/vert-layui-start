@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台布局-----22222222222222</title>
+    <link rel="stylesheet" href="/static/plugins/layui/css/layui.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">layui 后台布局</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <li class="layui-nav-item"><a href="">商品管理</a></li>
+            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">邮件管理</a></dd>
+                    <dd><a href="">消息管理</a></dd>
+                    <dd><a href="">授权管理</a></dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    贤心
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">退了</a></li>
+        </ul>
+    </div>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree " lay-filter="nav">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">默认展开</a>
+                    <ul class="layui-nav-child">
+                        <li><a href="javascript:;">选项1</a></li>
+                        <li><a href="javascript:;">选项2</a>
+                            <ul class="layui-nav-child">
+                                <li><a href="javascript:;">选项1</a></li>
+                                <li><a href="javascript:;">选项2</a></li>
+                                <li><a href="javascript:;">跳转</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:;">跳转</a></li>
+                    </ul>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">解决方案</a>
+                    <ul class="layui-nav-child">
+                        <li><a href="javascript:;">移动模块</a></li>
+                        <li><a href="javascript:;">后台模版</a></li>
+                        <li><a href="javascript:;">电商平台</a></li>
+                    </ul>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;">产品</a></li>
+                <li class="layui-nav-item"><a href="javascript:;">大数据</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+            <blockquote class="layui-elem-quote">用户列表</blockquote>
+            <div class="layui-block btnDiv">
+                <button class="layui-btn layui-btn-warm  radius1" data-type="getCheckData">选中行数据</button>
+                <button class="layui-btn layui-btn-danger radius2" data-type="getCheckLength">选中数目</button>
+                <button class="layui-btn layui-btn-normal radius3" data-type="isAll">是否全选</button>
+            </div>
+            <table class="layui-table" lay-data="{width:1030,url:'/static/json/user.json', page:true, id:'myTable',size:'lg'}"
+                   lay-filter="myTable">
+                <thead>
+                <tr>
+                    <th lay-data="{type:'checkbox',unresize:true}"></th>
+                    <th lay-data="{type:'numbers',unresize:true, align:'center'}">序号</th>
+                    <th lay-data="{field:'username',unresize:true, align:'center'}">用户名</th>
+                    <th lay-data="{field:'sex', unresize:true,align:'center'}">性别</th>
+                    <th lay-data="{field:'city',unresize:true, align:'center'}">城市</th>
+                    <th lay-data="{field:'sign',unresize:true, align:'center'}">签名</th>
+                    <th lay-data="{field:'experience',unresize:true, align:'center'}">积分</th>
+                    <th lay-data="{field:'classify', unresize:true,align:'center'}">职业</th>
+                    <th lay-data="{field:'wealth', unresize:true,align:'center'}">财富</th>
+                    <th lay-data="{field:'score',unresize:true, align:'center'}">评分</th>
+                    <th lay-data="{width:200,unresize:true, align:'center', toolbar: '#bars'}">操作栏</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <div class="layui-footer">© layui.com - 底部固定区域</div>
+</div>
+<script type="text/html" id="bars">
+    <a class="layui-btn layui-btn-primary layui-btn-sm radius1" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-sm radius1" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-sm radius1" lay-event="del">删除</a>
+</script>
+<script src="/static/plugins/layui/layui.js"></script>
+<script type="text/javascript">
+   layui.use(['table','element'], function(){
+      var element = layui.element,
+          $ = layui.jquery,
+          table = layui.table;
+          //监听导航点击
+      element.on('nav(nav)', function(elem){
+           //console.log(elem)
+           layer.msg(elem.text());
+      });
+      //监听表格复选框选择
+      table.on('checkbox(myTable)', function(obj){
+          console.log(obj)
+      });
+     //监听工具条
+      table.on('tool(myTable)', function(obj){ //元素的lay-filter
+          var data = obj.data;
+          if(obj.event === 'detail'){
+                layer.msg('ID：'+ data.id + ' 的查看操作');
+          } else if(obj.event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                     obj.del();
+                     layer.close(index);
+                });
+          } else if(obj.event === 'edit'){
+                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+          }
+      });
+
+      var active = {
+         getCheckData: function(){ //获取选中数据
+             var checkStatus = table.checkStatus('myTable'),//table的id
+                 data = checkStatus.data;
+             layer.alert(JSON.stringify(data));
+         }  ,
+         getCheckLength: function(){ //获取选中数目
+             var checkStatus = table.checkStatus('myTable')
+             ,data = checkStatus.data;
+             layer.msg('选中了：'+ data.length + ' 个');
+         },
+         isAll: function(){ //验证是否全选
+             var checkStatus = table.checkStatus('myTable');
+             layer.msg(checkStatus.isAll ? '全选': '未全选')
+         }
+      };
+
+      $('.btnDiv .layui-btn').on('click', function(){
+          var type = $(this).data('type');
+          active[type] ? active[type].call(this) : '';
+      });
+   });
+
+
+
+</script>
+</body>
+</html>
